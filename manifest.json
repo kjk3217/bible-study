@@ -1,0 +1,81 @@
+{
+  "name": "성경 강해집",
+  "short_name": "강해집",
+  "description": "요한계시록과 이사야 강해를 공부하는 PWA 앱",
+  "start_url": "/bible/index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#287f6e",
+  "background_color": "#287f6e",
+  "scope": "/bible/",
+  "lang": "ko",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "/bible/icon-192a.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/bible/icon-512a.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/bible/icon-192a.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/bible/icon-512a.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "요한계시록",
+      "short_name": "계시록",
+      "description": "요한계시록 강해 바로가기",
+      "url": "/bible/?book=revelation",
+      "icons": [
+        {
+          "src": "/bible/icon-192a.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "이사야",
+      "short_name": "이사야",
+      "description": "이사야 강해 바로가기",
+      "url": "/bible/?book=isaiah",
+      "icons": [
+        {
+          "src": "/bible/icon-192a.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  "categories": ["education", "books", "lifestyle", "utilities"],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "screenshots": [
+    {
+      "src": "/bible/screenshot-mobile.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "성경 강해집 메인 화면"
+    }
+  ]
+}
