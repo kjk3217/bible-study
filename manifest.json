@@ -2,7 +2,7 @@
   "name": "성경 강해집",
   "short_name": "강해집",
   "description": "요한계시록과 이사야 강해를 공부하는 PWA 앱",
-  "start_url": "/bible/index.html",
+  "start_url": "/bible-study/index.html",
   "display": "standalone",
   "orientation": "portrait",
   "theme_color": "#287f6e",
