@@ -824,6 +824,80 @@ document.addEventListener('visibilitychange', function() {
     }
 });
 
+
+// ============ 앱 종료 시 마지막 위치 저장/복원 ============
+
+// 현재 위치 저장
+function saveCurrentPosition() {
+    if (currentBook && currentChapter) {
+        const scrollArea = document.querySelector('.content-scroll-area');
+        const scrollPosition = scrollArea ? scrollArea.scrollTop : 0;
+        
+        const lastPosition = {
+            book: currentBook,
+            chapter: currentChapter,
+            scrollPosition: scrollPosition
+        };
+        
+        try {
+            localStorage.setItem('bible-last-app-position', JSON.stringify(lastPosition));
+        } catch (e) {
+            try {
+                sessionStorage.setItem('bible-last-app-position', JSON.stringify(lastPosition));
+            } catch (e2) {
+                // 저장 불가능하면 무시
+            }
+        }
+    }
+}
+
+// 앱 시작 시 마지막 위치로 복원
+function restoreLastAppPosition() {
+    try {
+        let saved = localStorage.getItem('bible-last-app-position');
+        if (!saved) {
+            saved = sessionStorage.getItem('bible-last-app-position');
+        }
+        
+        if (saved) {
+            const lastPosition = JSON.parse(saved);
+            
+            if (lastPosition.book && lastPosition.chapter) {
+                // 자동으로 마지막 위치로 이동
+                setTimeout(() => {
+                    selectBook(lastPosition.book);
+                    setTimeout(() => {
+                        selectChapter(lastPosition.chapter);
+                        
+                        // 스크롤 위치 복원
+                        if (lastPosition.scrollPosition > 0) {
+                            setTimeout(() => {
+                                const scrollArea = document.querySelector('.content-scroll-area');
+                                if (scrollArea) {
+                                    scrollArea.scrollTop = lastPosition.scrollPosition;
+                                }
+                            }, 500);
+                        }
+                    }, 500);
+                }, 500);
+            }
+        }
+    } catch (e) {
+        // 복원 실패시 무시
+    }
+}
+
+// 앱 종료 시 현재 위치 저장
+window.addEventListener('beforeunload', saveCurrentPosition);
+window.addEventListener('pagehide', saveCurrentPosition);
+
+// 페이지 가시성 변경 시에도 저장 (모바일 대응)
+document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+        saveCurrentPosition();
+    }
+});
+
 // 초기화 시 저장된 폰트 크기 로드
 setTimeout(() => {
     loadSavedFontSize();
