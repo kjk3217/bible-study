@@ -73,6 +73,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // URL 파라미터 확인 (바로가기 지원)
     checkURLParameters();
+
+    // 마지막 위치 복원 추가
+    restoreLastAppPosition();
     
     // 캐시 상태 확인 (개발용)
     setTimeout(async () => {
