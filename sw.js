@@ -1,7 +1,7 @@
 // 서비스 워커 - 성경 강해집 PWA
 const CACHE_NAME = 'bible-study-v2.1.0';
 const CACHE_VERSION = '2.1.0';
-const BASE_PATH = '/bible';
+const BASE_PATH = '/bible-study';
 
 // 앱 셸 캐싱 파일들
 const APP_SHELL_FILES = [
